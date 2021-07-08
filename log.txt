@@ -14,5 +14,4 @@
             A página possi informações chave sobre o dispositivo e downloas de seu manual, datasheet e driver
         7017: https://www.icpdas-usa.com/i_7017.html
             A página possui todas as informações chave sobre o dispositivo, assim como manuais, datasheets, e download de dlls e exemplos de uso do mesmo.
-
-b2
+            
