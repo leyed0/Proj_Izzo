@@ -1,0 +1,17 @@
+05/07/2021 - Reunião no campus realizada. Me foi apresentado o sistema que será utilizado.
+    Utilizaremos dois modulos industriais para adquirir e converter os dados dos sensores: ICP CON 7561 (conversor USB to Serial) e LR COM LR-7017 ou ICP-CON I-7017 (Módulo de aquisição de data Analógico)
+
+    O módulo 7017 é um conversor analogico para digital bidirecional que utiliza a comunicação serial RS-485 com baud rate entre 1200 e 115200 bps. 
+    Ele aceita alimentação de 10 a 30 volts, tem precisão de 16 bits e 8 canais analógicos
+    Taxa de amostragem: 10hz
+    Página do produto: https://www.icpdas-usa.com/i_7017.html
+    modelo I7017F possui maior sample rate: 60hz
+
+    Já o Modulo 7561 é un conversor serial para usb com suporte a RS-232, 422 e 485. Ele é capaz de se comunicar com baud rate de 300 a 115200 bps - De acordo com meu conhecimento LIMITADO, acredito que seu uso é opcional e que conversores menos robustos suprem as necessidades do projeto sem problemas.
+
+    Após um dia de pesquisa, encontrei as páginas de informações de ambos os módulos:
+        7561: http://www.icpdas.com/root/product/solutions/industrial_communication/converter/i-7561.html
+            A página possi informações chave sobre o dispositivo e downloas de seu manual, datasheet e driver
+        7017: https://www.icpdas-usa.com/i_7017.html
+            A página possui todas as informações chave sobre o dispositivo, assim como manuais, datasheets, e download de dlls e exemplos de uso do mesmo.
+
