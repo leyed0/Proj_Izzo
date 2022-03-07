@@ -1,0 +1,34 @@
+VC Demo List
+|--\7k
+|   |--\MFC
+|   |   +--\Analog  ==> Analog Input demo
+|   |
+|   +--\SDK
+|       |--\Demo01  ==> Send/Receive command with checksum disable
+|       |--\Demo02  ==> Send/Receive command with checksum enable
+|       |--\Demo03  ==> Send/Receive command to Counter, ANC PC-202
+|       |--\Demo04  ==> Send/Receive command to OMRON PLC, CQM1 or C200H
+|       |--\Demo05  ==> Multi-speed  demo
+|       |--\Demo06  ==> Multi-data-format demo
+|       |--\Demo07  ==> Multi-speed & Multi-data-format demo
+|       |
+|       |--\Demo20  ==> Analog  Input  demo 
+|       |--\Demo21  ==> Analog  Input  demo
+|       |--\Demo23  ==> Analog  Output demo
+|       |--\Demo24  ==> Digital Input  demo
+|       |--\Demo25  ==> Digital Output demo
+|       |--\Demo26  ==> Multi-speed    demo
+|       |--\Demo27  ==> 8 Channels Analog Input demo 
+|       |--\Demo28  ==> Analog-Output  ReadBack demo
+|       +--\Demo29  ==> Digital-Output ReadBack demo
+|
+|--\87k
+|   |--\Di          ==> Digital Input demo
+|   |--\Do          ==> Digital Output and ReadBack demo
+|   +--\DoBit       ==> Digital Bit-Output and ReadBack demo
+|
++--\8k
+    |--\Di          ==> Digital Input demo
+    |--\Do          ==> Digital Output and ReadBack demo
+    +--\DoBit       ==> Digital Bit-Output and ReadBack demo
+

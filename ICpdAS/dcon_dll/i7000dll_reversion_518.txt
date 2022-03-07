@@ -1,0 +1,521 @@
+I7000DLL
+
+[Date2006/07/27][Ver 5.18] by martin
+  Modify:
+  DigitalIOReadBackGroup_FR     
+  DigitalIOReadBackBit_FR  
+  DigitalOnLineStatus_FR
+  parameter wType=0 Read Group DO Value, wType=1 Read Group DI Value
+  Note1: The definition of wType changed in firmware 1.0.06 of 7188EF-016.
+  Note2: There is no change in dll source code, but the definition of wType changed in firmware.
+  So the applications must change the parameter wType if they have included the above functions.
+----------------------------------------------------------------------------------------------------------
+
+[Date2006/04/25][Ver 5.17] by martin
+DLL released: 25-April-2006
+  New Support for i-8017HS 16 channel AI
+  use old function:
+    AnalogIn_8K
+    
+  New Support for i-8082 Frequency module
+  new function:
+    FloatFreq_All_8K
+    FloatFreq_8K
+  New Support for i-8046
+  use old function:
+    DigitalIn_8K
+  New Support for i-87015,i-87019 AI module on i-8000 system
+  use old function:
+    AnalogIn_8K
+    AnalogInFsr_8K
+    AnalogInHex_8K
+    AnalogInAll_8K
+    SetAlarmConnect_8K
+    ReadAlarmMode_8K
+    SetAlarmLimitValue_8K
+    ReadAlarmLimitValue_8K
+    ClearLatchAlarm_8K
+    SetAlarmMode_8K
+    ReadAlarmStatus_8K
+  New Support for i-87082 Counter/Frequency module on i-8000 system
+    ReadCounter
+    ReadFreq
+    ClearCounter
+    SetCounterStatus
+    ReadCounterStatus
+  Note i-8082 and i-87082 are totally different module and use different functions,
+  although they use the same ID 0x8282 in i7000.dll
+----------------------------------------------------------------------------------------------------------
+
+
+[Date:2005/10/17][Ver 5.16] by martin
+DLL released: 04-Oct-2005
+
+  New Support for i-87015,i-87019 AI module
+  use old functions ==>
+   	AnalogIn_All_87K
+ 	AnalogIn_87K
+
+  Debug:
+	SetAlarmLimitValue 
+	  when type code =0x0E (J Type), the wPoints=2 not 3
+	AnalogIn_All
+	  when the AI values are rear -0000.0, will return under range error code.
+	ReadCounter
+	  when the couter values are in hex format,there are bugs for string processing. 
+----------------------------------------------------------------------------------------------------------
+[Date:2005/05/06][Ver 5.1.5] by martin
+Module: 7188EF-016
+  new function:
+	DigitalOutAll_FR						 
+	DigitalOutGroup_FR						 
+	DigitalOutBit_FR						 
+	DigitalIOReadBackAll_FR					 
+	DigitalIOReadBackGroup_FR				 
+	DigitalIOReadBackBit_FR					 
+	DigitalOnLineStatus_FR					 
+	GetChCount_FR	  				
+			    
+
+Module: 8080
+  new function:
+    ReadUpDownDirPulse_All  (support signed long data type)	
+	ReadUpDownDirPulse	    (support signed long data type)				 
+  Modify:
+	ReadCounter		        (support unsigned long data type)					     	
+	ReadCounter_All		    (support unsigned long data type)					 
+	ReadFreq                (support unsigned long data type)
+  Note: DCON firmware E10M_nnn.exe and DCON_nnn.exe must be A3.05 or above to support 
+        the modified command format.
+        
+Module: 7045       		
+use old functions ==>
+    SetSafeValueForDo
+    ReadSafeValueForDo
+    SetPowerOnValueForDo
+    ReadPowerOnValueForDo
+    DigitalOut
+    DigitalBitOut
+    DigitalOutReadBack
+    
+    
+Module: 7055
+use old functions ==>
+    SetSafeValueForDo
+    ReadSafeValueForDo
+    SetPowerOnValueForDo
+    ReadPowerOnValueForDo
+    DigitalOut
+    DigitalBitOut
+    DigitalOutReadBack
+    DigitalIn
+    DigitalInCounterRead
+    ClearDigitalInCounter
+    DigitalInLatch
+    ClearDigitalInLatch
+----------------------------------------------------------------------------------------------------------
+
+
+[Date:2004/8/5][Ver 5.1.2] by martin
+Debug:
+  readCounter readMode=2 dwBuf[9]==>counter or frequency value
+    dwBuf[10]==>overflow value
+
+----------------------------------------------------------------------------------------------------------
+[Date:2004/7/20][Ver 5.1.1] by martin
+
+Module: 7080 *(Note 1) ,87082,8080 
+use new functions ==>
+ReadCounter,ReadCounter_All,ReadFreq,ReadFreq_All,
+	ClearCounter,SetCounterStatus,ReadCounterStatus
+
+Note1: User can choose original 7080 series functions or these new functions
+
+Module: All 87K *(Note 2) DI and DIO modules when plugged into 8K MCU
+use new functions ==>
+DigitalIn_8K, DigitalInCounterRead_8K, 
+	ClearDigitalInCounter_8K, DigitalInLatch_8K
+
+Note2: All 87K I/O modules when plugged into 8K MCU look as 8K
+	dwBuf[2] => module ID 
+	must be : 0x8051/0x8052/0x8053/0x8054/0x8055/0x8058/0x8063/0x8040
+	not : 0x87051/0x87052/0x87053/0x87054/0x87055/0x87058/0x87063/0x87040
+
+Module: 7019 
+use old functions ==>
+AnalogIn,AnalogInFsr,AnalogInHex,AnalogIn8,AnalogInAll
+
+Module: 7015 
+use old functions ==>
+AnalogIn,AnalogInFsr,AnalogInHex,AnalogInAll
+
+Module: 87040 
+use old functions ==>
+DigitalIn_87K, DigitalInCounterRead_87K, 
+	ClearDigitalInCounter_87K, DigitalInLatch_87K
+
+Module: 87041 
+use old functions ==>
+DigitalOut_87K,DigitalBitOut_87K,DigitalOutReadBack_87K
+
+Module: 8050 
+use old functions ==>
+DigitalBitOut_8K,DigitalOut_8K,DigitalIn_8K,DigitalOutReadBack_8K
+
+Module: 8069
+use old functions ==>
+DigitalOut_8K,DigitalBitOut_8K,DigitalOutReadBack_8K 
+ 
+Modify:
+	1.AnalogIn for 7016 can set parameter to selecte channel to read Analog data
+
+Update:Uart.DLL ==>2.1.1
+----------------------------------------------------------------------------------------------------------
+[Date:2003/9/10][Ver 5.0.8] by Sean
+Add:
+	1. DigitalOut_8K supports, DigitalBitOut_8K, DigitalOutReadBack_8K
+	support to I8037
+	2. DigitalIn, DigitalInCounterRead, ClearDigitalInCounter
+	support to I7058
+Modify:
+	Modify the all souce code for Microsoft Windows OS and WinCE OS
+Update:Uart.DLL ==>2.0.4
+----------------------------------------------------------------------------------------------------------
+[Date:2003/6/12][Ver 5.0.7] by Sean
+Fix bug:
+	AnalogOutHex
+	AnalogOutFsr
+Modify:
+	AnalogInAll
+	AnalogInAll_87K
+Update:Uart.DLL ==>2.0.3
+----------------------------------------------------------------------------------------------------------
+[Date:][Ver 5.0.6] by Sean
+Modify:
+	1.wrong:
+		if(strlen(szRec8k)==7)
+	correct:
+		if(strlen(szRec8k)==6)
+		AnalogIn(),AnalogInHex(),AnalogInFsr()
+		AnalogIn_8K(),AnalogInHex_8K(),AnalogInFsr_8K()
+		AnalogIn_87K(),AnalogInHex_87K(),AnalogInFsr_87K()[03/03/10]
+	2.Modify 4 parameter name in all functions of I7000.c['03/05/05]
+	3.AnalogInHex_8K dwBuf[7] --->dwBuf[8]['03/05/05]
+
+Fix bug:
+	AnalogOutReadBackHex
+Add: 
+	AnalogOutHex_87K support to I87022/87026
+	AnalogOutFsr_87K support to I87022/87026 
+	AnalogOutReadBackHex_87K[03/04/24]
+	AnalogOutReadBackFsr
+	AnalogOutReadBackFsr_87K[03/04/25]
+
+
+Update:Uart.DLL ==>2.0.2
+-----------------------------------------------------------------------------------------------------------------
+[Ver 5.0.5] by Sean
+
+	Modify:	1.i7000.c  [2002/11/20][2003/01/08]	
+		AnalogIn8()
+
+		2.i87000.c	[2003/01/06]
+		DigitalOut_87K
+
+	Fix bug:1.i8000.c,i87000.c	[2002/11/06]
+		AnalogInFsr_8K,AnalogInHex_8K,AnalogInFsr_87K,AnalogInHex_87K		
+
+		2.i8000.c [2003/01/02]
+		ReadAlarmStatus_8K,ReadAlarmMode_8K,ClearLatchAlarm_8K
+		SetAlarmMode_8K,ReadAlarmStatus_8K,SetConfigurationStatus_8K,
+		ReadConfigurationStatus_8K,SetStartUpValue_8K,ReadStartUpValue_8K
+
+		3.i87000.c [2003/01/02]
+		SetStartUpValue_87K,ReadStartUpValue_87K		
+
+		4.i7000.c	[2003/01/20]
+		SetConfiguration_7080
+		Send command 'szCmd',lowcase change as uppercase 
+
+		5.ReadSafeValueForAo()
+		  if(wCheckSum==0) wRecStrLen=10; else wRecStrLen=12;
+		  modified as
+		  if(wCheckSum==0) wRecStrLen=9; else wRecStrLen=11;//for 7021/7021P/7022
+		6.AnalogInAll  [2003/03/28]
+		7.AnalogInAll_87K[2003/03/28]
+
+	ADD:  1.DigitalOut_8K(),DigitalBitOut_8K(),DigitalIn_8K() support to 
+	      module I-8077[2003/01/22]
+	      2.SetSafeValueForDo(),SetPowerOnValueForDo(),
+		ReadPowerOnValueForDo(),ReadSafeValueForDo()
+	      support to module I-7063/63D/63A/63AD/63B/63BD and I-7066/66D
+	      3.DigitalOutReadBack(),DigitalBitOut() support to module I-7066/66D
+	Delete:SetConfigurationStatus_8K(),SetConfigurationStatus_87K()
+
+	Update:Uart.DLL ==>2.0.2
+-----------------------------------------------------------------------------------------------------------------
+[Date: 10,22,2002] [Ver 5.0.4] by Sean
+	Add:1.add the function AnalogOutHex for I7021/21p/22
+	Add:2.add the function AnalogOutFsr for I7021/21p/22
+	Add:3.add the function AnalogOutHexReadback for I7021/21p/22
+
+[Date: Sept,20,2002] [Ver 5.0.3] by Sean
+	Add:1.add the modules 8058,8040,8042 to DigitalIn_8K
+	    2.add the modules 8041,8042 to DigitalBitOut_8K,DigitalOut_8K,DigitalOutReadBack_8K
+	    3.add the modules 87058 to DigitalIn_87K
+	Modify:1. modify return of DigitalIn_8K(),DigitalOutReadBack_8K()
+		  ex:  sscanf(szRec8K,"!AA%04X",&dwBuf[5]);
+	       2. HostIsOK() function change Send_Receive_Cmd() to Send_Cmd()
+		  because ~**,no response
+----------------------------------------------------------------------------------------------------------
+[Date: July,11,2002] [Ver 5.0.2] by Sean
+	Add:1.ReadConfigStatus to i7000.def
+            2.AnalogInFsr_87K,AnalogInHex_87K,ReadStartUpValue_87K,SetConfigurationStatus_87K
+              SetStartUpValue_87K to i8700.h
+	    3.AnalogInFsr_8K,AnalogInHex_8K,SetConfigurationStatus_8K,MakeCRC16Table
+              to i8000.h
+        Remove:SetPowerOnAndSafeValue from dll
+	Modify:WORD CALLBACK Get_Dll_Version(void)
+	{
+		return(0x502);	(DEC changed as Hex)
+	}
+	Update:Uart.DLL ==>2.0.1
+----------------------------------------------------------------------------------------------------------	
+[Date: Apr,15,2002]  [Ver 5.0.1] by Kevin
+	Modify AnalogIn8, AnalogInAll_8K, AnalogInAll_87K
+----------------------------------------------------------------------------------------------------------
+[Date: Mar,19,2002]  [Ver 5.0.0] by Kevin
+	Add:    AnalgoIn_87K to i8700.h
+	Fix:    87013 reads values error.
+	Modify: Declaration of export/import functions
+	Remove: 1. DigitalOut, DigitalIn from i87000.h 
+		2. Test, Float_Sub_2, Short_Sub_2 from i7000.h and i7000.c
+	Update: Uart.Dll ==> 2.0.0	
+----------------------------------------------------------------------------------------------------------	
+[Date: Jan-19, 2000]  [Ver 4.20]
+  1. Modify following function
+        DigitalOut(......)
+----------------------------------------------------------------------------------------------------------
+[Date: Dec-9, 1999]   [Ver 4.10]
+  1.  Modify following function
+        AnalogOut(......) that supports 7022
+        AnalogOutReadBack(......) that supports 7022
+        ReadEventCounter(......) fix a bug that is when checksum enable, the event count value is wrong
+        SetPowerOnValueForAo(......) that supports 7022
+        SetSafeValueForAo(......) that supports 7022
+  2.  added follow function
+        ReadSafeValueForAo(......) that supports 7021/7022/7024 
+        ReadPowerOnValueForAo(......) that supports 7024
+----------------------------------------------------------------------------------------------------------
+[Date: Aug-24, 1999]   [Ver 4.00]
+  1.  updated from [Ver 0350-255]
+  2.  Modify following function
+        DigitalIn(......) that support 7063 and 7065
+  3.  added following function
+        DigitalBitOut(......) for Digital Output Module
+        ReadPowerOnValueForDo(......)
+        ReadSafeValueForDo(......)
+        DigitalInCounterRead(......)   
+        ClearDigitalInCounter(.......)
+----------------------------------------------------------------------------------------------------------
+[Date: July-15, 1999]  [Ver 0350-255]
+  1.  [Ver 3.50] with support 255 COM Ports
+
+----------------------------------------------------------------------------------------------------------
+[Date: June-16, 1999]  [Ver 3.50]
+  1.  AnalogIn(......), AnalogInFsr(......), AnalogInHex(......) support 7016
+  2.  AnalogOut(......) support 7016
+  3.  ReadEventCounter(......) support 7016
+  4.  SetAlarmLimitValue(......) support 7016
+  5.  ClearLatchAlarm(......) support 7016
+  6.  ReadOutputAlarmState(......) support 7016
+  7.  DigitalIn(......) support 7016
+  8.  EnableAlarm(......), DisableAlarm(......) support 7016 
+  9.  SetPowerOnValueForDo(...)   fix the bug for 7060
+  10. SetSafeValueForDo(...)      fix the bug for 7060
+  11. Added following function:
+         SetLedDisplay(......)  support 7016/7033  
+         SetupLinearMapping(......) support 7014/7016
+         EnableLinearMapping(......) support 7014/7016
+         DisableLinearMapping(......) support 7014/7016
+         ReadLinearMappingStatus(......) support 7014/7016
+         DigitalOut_7016(......) support 7016
+----------------------------------------------------------------------------------------------------------
+[Date:  May-20, 1999]  [Ver 3.40]
+  1. AnalogIn(......), AnalogInFsr(......), AnalogInHex(......) support 7033
+  2. Added following function
+        SetLedDisplay_7033(.....)
+        GetLedDisplay_7033(.....)	
+----------------------------------------------------------------------------------------------------------
+[Date:  Mar-12, 1999]  [Ver 3.30]
+  AnalogIn()
+
+     if( (w7000[2]!=0x7013 && w7000[2]!=0x7011 && w7000[2]!=0x7018 ) && (strlen(szRec)!=wRecStrLen) )
+     {
+        err=ResultStrCheckError;
+        goto ret_err;
+     }
+
+     //-----  Added by Shu, 7011, 7013, 7018
+     if( w7000[2]==0x7013 || w7000[2]==0x7011 || w7000[2]==0x7018 )
+     {
+	 if( !memcmp(szRec,">-0000",6) )
+	 {
+	     err=UnderInputRange;
+	     goto ret_err;
+	 }
+	 if( !memcmp(szRec,">+9999",6) )
+	 {
+	     err=ExceedInputRange;
+	     goto ret_err;
+	 }
+     }
+
+----------------------------------------------------------------------------------------------------------
+[Date:	Jan-14, 1999]  [Ver 3.30]
+  A. *** replace the UART.DLL and UART.LIB with new version
+  B. *** Add the following function
+       SetSafeValue()
+       ReadSaveValue()
+       SetPowerOnAndSafeValue()
+
+/*----- 7011/7012/7014 Set Power On and Safe value ---------*/
+EXPORTS WORD CALLBACK SetPowerOnAndSafeValue(WORD w7000[], float f7000[],
+	char szSendTo7000[], char szReceiveFrom7000[]);
+//---------------------- input -------------------------------------
+//w7000[0];   // RS-232 port number: 1/2/3/4
+//w7000[1];   // module address: 0x00 to 0xFF
+//w7000[2];   // module ID: 0x7011
+//w7000[3];   // checksum: 0=disable, 1=enable
+//w7000[4];   // TimeOut constant: normal=100  , 0.1 second
+//w7000[5];   // 0xPPSS:  PP=Power On value   SS=safe value
+	      //	      00: DO0 -> Off   DO1 -> Off
+	      //	      01: DO0 -> On    DO1 -> Off
+	      //	      02: DO0 -> Off   DO1 -> On
+	      //	      03: DO0 -> On    DO1 -> On
+//w7000[6];   // flag: 0=no save, 1=save send/receive string
+----------------------------------------------------------------------------------------------------------
+[Date:	OCT-26, 1998]  [Ver 3.20]
+    *** Modifying some functions for 7024.
+		AnalogOut(), AnalogOutReadBack()
+    *** Adding SetConfiguration_7080() function
+	/************************************************************/
+	/**************** modified function  ************************/
+	/************************************************************/
+	EXPORTS WORD CALLBACK AnalogOut(WORD w7000[], float f7000[],
+		char szSendTo7000[], char szReceiveFrom7000[])
+	{
+	  char	  wPort,wFlag,c1,c2;
+	  WORD	  wAddr,wRetVal,i,wID,wCheckSum,wTimeOut,err,wT,wChannel;
+	  float   fVal;
+	  WORD	  wRecStrLen;
+	  char	  OutCh[10];
+
+	  //---------------------- input -------------------------------------
+	  wPort=(char)w7000[0];   // RS-232 port number: 1/2/3/4
+	  wAddr=w7000[1];	  // module address: 0x00 to 0xFF
+	  wID=w7000[2]; 	  // module ID: 0x7021
+	  wCheckSum=w7000[3];	  // checksum: 0=disable, 1=enable
+	  wTimeOut=w7000[4];	  // TimeOut constant: normal=100
+	  wChannel=w7000[5];	  // Not used if module ID is 7021
+				  // Channel No.(0 to 3) if module ID is 7024
+	  wFlag=(char)w7000[6];   // flag: 0=no save, 1=save send/receive string
+	  fVal=f7000[0];	  // DA output value: from 0.0 to 10.0
+	  //---------------------- output ------------------------------------
+				  // void
+
+	/************************************************************/
+	/**************** modified function  ************************/
+	/************************************************************/
+	EXPORTS WORD CALLBACK AnalogOutReadBack(WORD w7000[], float f7000[],
+		char szSendTo7000[], char szReceiveFrom7000[])
+	{
+	   char  wPort,wFlag,cc[80],c1,c2;
+	   WORD  wAddr,wRetVal,i,j,wReadType,wID,wCheckSum,err,wT,wTimeOut,wChannel;
+	   WORD  wRecStrLen;
+
+	   //---------------------- input -------------------------------------
+	   wPort=(char)w7000[0];  // RS-232 port number: 1/2/3/4
+	   wAddr=w7000[1];	  // module address: 0x00 to 0xFF
+	   wID=w7000[2];	  // module ID: 0x7021 or 0x7024
+	   wCheckSum=w7000[3];	  // checksum: 0=disable, 1=enable
+	   wTimeOut=w7000[4];	  // TimeOut constant: normal=100
+	   wReadType=w7000[5];	  //   0: command read back ($AA6)
+				  //   1: analog output of current path read back ($AA8)
+	   wFlag=(char)w7000[6];  // flag: 0=no save, 1=save send/receive string
+	   wChannel=w7000[7];	  //   Channel No.(0 to 3), if wID is 7024
+				  //   Not used,	    else
+	   //---------------------- output ------------------------------------
+				  // f7000[0]=analog output value read back
+
+	/************************************************************/
+	/**************** modified function  ************************/
+	/************************************************************/
+	/*-------- Set configuration for 7080 ---------*/
+	EXPORTS WORD CALLBACK SetConfiguration_7080(WORD w7000[], float f7000[],
+		char szSendTo7000[], char szReceiveFrom7000[]);
+	//---------------------- input -------------------------------------
+	//wPort=(char)w7000[0];   // RS-232 port number: 1/2/3/4
+	//wAddrOld=w7000[1];	  // module original address: 0x00 to 0xFF
+	//wID=w7000[2]; 	  // module ID: 0x7080
+	//wCheckSumOld=w7000[3];	  // module original checksum: 0=disable, 1=enable
+	//wTimeOut=w7000[4];	  // TimeOut constant: normal=100
+	//wFreqGateTime=w7000[5]; // desired frequency gate time:
+				  //	  0: 0.1 second
+				  //	  1: 1.0 second
+	//wFlag=(char)w7000[6];   // flag: 0=no save, 1=save send/receive string
+	//wAddrNew=w7000[7];	  // desired new address
+	//wType=w7000[8];	  // desired Type->  0:Counter mode
+				  //		     1:Frequency mode
+	//wBaudrate=w7000[9];	  // desired Baudrate:
+				  //	3: 1200 BPS    4:  2400 BPS
+				  //	5: 4800 BPS    6:  9600 BPS
+				  //	7: 19200 BPS   8:  38400 BPS
+				  //	9: 57600 BPS   10: 115200 BPS
+	//wCheckSumNew=w7000[10]; // desired Checksum Address
+
+----------------------------------------------------------------------------------------------------------
+[Date: July-14, 1998]  [Ver 3.10]
+
+  Remove I7000_ for some function.
+----------------------------------------------------------------------------------------------------------
+DATE   July, 08, 1998
+  I7000_DigitalIn  add the module ID for 7011/7012/7014
+----------------------------------------------------------------------------------------------------------
+DATE   July, 06, 1998
+  Add some command for 7011/7012/7014 to Enable/Disable Alarm
+----------------------------------------------------------------------------------------------------------
+DATE  June, 15, 1998
+  Add the command for 7080/7080D
+     (1) set the module mode
+	Command:
+	   ~AAAM
+	Description:
+	   M=0	4080  mode
+	   M=1	4080D mode
+     (2) read the module mode
+	Command:
+	   ~AAA
+	Description
+	   !AA0  4080 mode
+	   !AA1  4080D mode
+----------------------------------------------------------------------------------------------------------
+DATE  May, 18, 1998
+  Add the I7000_AnalogInHex (reading data in hexadecimal format)
+  Add the I7000_AnalogInFsr (reading data in %FSR)
+
+----------------------------------------------------------------------------------------------------------
+DATE  April, 28, 1998
+  Add the 7080 module in 0204 folder
+
+
+
+
+
+
+
+
+
+
+
+

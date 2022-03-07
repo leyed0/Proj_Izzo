@@ -1,0 +1,7 @@
+The key points of the DEMO7.EXE are given as following:
+1. copy UART.DLL & I7000.DLL to c:\windows\system\*.* first
+2. Multi-speed & multi-data format demo
+// --------- PLC driver demo : data format 1 & speed 1 -------------
+// --------- I-7000 driver demo : data format 2 & speed 1 -------------
+// --------- I-7000 driver demo : data format 2 & speed 2 -------------
+

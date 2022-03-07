@@ -1,0 +1,16 @@
+The key points of the DEMO6.exe are given as following:
+1. copy UART.DLL & I7000.DLL to c:\windows\system\*.* first
+2. send command to OMRON PLC CQM1
+3. receive result from OMRON PLC CQM1
+4. send-command=@00SC0252* + [0x0D]
+5. receive-result=@00SC0050* + [0x0D]
+6. send-command to I-7000
+7. receive-command from I-7000
+8. multi-data-format driver demo
+
+The key features of the OMRON CQM1 are given as following:
+1. RS-232 interface
+2. need a I-7520 to convert RS-232 to RS-485
+3. baud rate=9600, 1 start-bit, 7 data-bit, even-parity, 2 stop-bit
+4. refer to NAP7000S chapter 5 for more informations
+

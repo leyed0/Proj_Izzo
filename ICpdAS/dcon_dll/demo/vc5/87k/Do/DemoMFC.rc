@@ -1,0 +1,251 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\DemoMFC.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\DemoMFC.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DEMOMFC_DIALOG DIALOGEX 0, 0, 172, 151
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "87KDo:  Digital Out demo for 87054/55/57/63/64/65/66/68"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Exit",IDC_Exit,16,130,50,14
+    PUSHBUTTON      "Active",IDC_Active,16,111,50,15
+    LTEXT           "Module ID",IDC_STATIC,14,17,34,9
+    COMBOBOX        IDC_ModuleID,14,29,41,60,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "COM Port",IDC_STATIC,73,17,34,9
+    COMBOBOX        IDC_Com,73,29,39,60,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Baud Rate",IDC_STATIC,121,17,34,9
+    COMBOBOX        IDC_BaudRate,121,29,37,60,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Checksum",IDC_STATIC,14,46,34,9
+    COMBOBOX        IDC_Checksum,14,57,52,60,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Address",IDC_STATIC,73,46,44,9
+    EDITTEXT        IDC_Address,73,57,38,12,ES_AUTOHSCROLL
+    GROUPBOX        " Configuration Setting ",IDC_STATIC,7,7,158,69
+    LTEXT           "Output Mode",IDC_STATIC,15,80,44,9
+    COMBOBOX        IDC_OutputMode,15,92,55,60,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Digital Output[Hex]",IDC_STATIC,96,82,57,9
+    EDITTEXT        IDC_Do,96,94,38,12,ES_AUTOHSCROLL
+    LTEXT           "Read Back[Hex]",IDC_STATIC,96,110,57,9
+    EDITTEXT        IDC_Rb,96,122,38,12,ES_AUTOHSCROLL | WS_DISABLED
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "DemoMFC MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "DemoMFC\0"
+            VALUE "LegalCopyright", "Copyright (C) 1900\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "DemoMFC.EXE\0"
+            VALUE "ProductName", "DemoMFC Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DEMOMFC_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 165
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 144
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DEMOMFC_DIALOG DLGINIT
+BEGIN
+    IDC_ModuleID, 0x403, 6, 0
+0x3738, 0x3530, 0x0034, 
+    IDC_ModuleID, 0x403, 6, 0
+0x3738, 0x3530, 0x0035, 
+    IDC_ModuleID, 0x403, 6, 0
+0x3738, 0x3530, 0x0037, 
+    IDC_ModuleID, 0x403, 6, 0
+0x3738, 0x3630, 0x0033, 
+    IDC_ModuleID, 0x403, 6, 0
+0x3738, 0x3630, 0x0034, 
+    IDC_ModuleID, 0x403, 6, 0
+0x3738, 0x3630, 0x0035, 
+    IDC_ModuleID, 0x403, 6, 0
+0x3738, 0x3630, 0x0036, 
+    IDC_ModuleID, 0x403, 6, 0
+0x3738, 0x3630, 0x0038, 
+    IDC_BaudRate, 0x403, 7, 0
+0x3131, 0x3235, 0x3030, "\000" 
+    IDC_BaudRate, 0x403, 6, 0
+0x3735, 0x3036, 0x0030, 
+    IDC_BaudRate, 0x403, 6, 0
+0x3833, 0x3034, 0x0030, 
+    IDC_BaudRate, 0x403, 6, 0
+0x3931, 0x3032, 0x0030, 
+    IDC_BaudRate, 0x403, 5, 0
+0x3639, 0x3030, "\000" 
+    IDC_BaudRate, 0x403, 5, 0
+0x3834, 0x3030, "\000" 
+    IDC_BaudRate, 0x403, 5, 0
+0x3432, 0x3030, "\000" 
+    IDC_BaudRate, 0x403, 5, 0
+0x3231, 0x3030, "\000" 
+    IDC_Checksum, 0x403, 12, 0
+0x3a30, 0x4420, 0x7369, 0x6261, 0x656c, 0x0064, 
+    IDC_Checksum, 0x403, 11, 0
+0x3a31, 0x4520, 0x616e, 0x6c62, 0x6465, "\000" 
+    IDC_OutputMode, 0x403, 15, 0
+0x3a30, 0x4620, 0x7869, 0x6465, 0x5620, 0x6c61, 0x6575, "\000" 
+    IDC_OutputMode, 0x403, 13, 0
+0x3a31, 0x4920, 0x636e, 0x6572, 0x656d, 0x746e, "\000" 
+    IDC_OutputMode, 0x403, 13, 0
+0x3a32, 0x4420, 0x6365, 0x6572, 0x656d, 0x746e, "\000" 
+    IDC_OutputMode, 0x403, 14, 0
+0x3a33, 0x5320, 0x6968, 0x7466, 0x4c2d, 0x6665, 0x0074, 
+    IDC_OutputMode, 0x403, 15, 0
+0x3a34, 0x5320, 0x6968, 0x7466, 0x522d, 0x6769, 0x7468, "\000" 
+    0
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "res\DemoMFC.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

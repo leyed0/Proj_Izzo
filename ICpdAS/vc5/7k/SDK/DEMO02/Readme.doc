@@ -1,0 +1,8 @@
+The key points of the DEMO2.EXE are given as following:
+1. copy UART.DLL & I7000.DLL to c:\windows\system\*.* first
+2. checksum ENABLE
+3. send command to 7000 module
+4. receive result from 7000 module
+5. multi-task driver demo
+6. non-multi-task driver demo
+

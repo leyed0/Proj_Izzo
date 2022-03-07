@@ -1,0 +1,193 @@
+/**************************************UartDLL************************************************/
+[V2.1.4][10/06/2005] by Sean
+New:
+        1.Add the function ModbusGetCRC16(), Send_Receive_Binary
+        2.Add the function Change_ParityErrorCheck()
+        3.Add the function Send_Receive_UserCmd()
+Modify:
+        1.Modify the vxc_Read()
+        2.Modify the vxc_Open() 
+        (Change the name of COM port (COM10 and after) to MSP
+        3.Modify Get_Com_Status
+Fix;
+        1.Fix the Open_Com and Change_Config bug
+
+
+[V2.1.3][2004, Nov] by Sean
+ Reversion
+[V2.1.2][2004, Sep] by Sean
+New:
+	1.Add Mark,Space parity ['04/09/17]
+	2.Add predefinition to avoid to use GetOverlappedResult().
+	3.Add the function ReadComn().
+Modify:
+	1.Modify the timeout algorithm of Send_Receive_Cmd(),
+	Receive_Cmd(),Receive_Binary(),Send_Receive_Cmd_WithChar(),Receive_Cmd_WithChar()[2004/09/22]
+---------------------------------------------------------------------------------------------------------------
+[Ver2.1.1][2004, July] by Sean (Thread/No Thread option)
+Fix:
+	Fix Add_Checksum() bug
+New:
+	Add #define _Thread_ (Provide Thread)
+
+---------------------------------------------------------------------------------------------------------------
+[Ver2.1.0][2004] by Sean (Thread)
+[Ver2.0.6][2004] (No Thread)
+New:
+	1. Support the thread fucntion ['04/4/7]
+Fix;
+	1. Fix the Send_Cmd & Send_Receive_Cmd_WithChar checksum bug
+---------------------------------------------------------------------------------------------------------------
+[Ver2.0.5][/2004] by Sean
+New: 1. Add the function Set_Break ['04/2/2]
+	
+Fix:
+	1.Fix the parity bugs of Change_Config ['03/10/14]
+	2.Send_Receive_Cmd ['03/11/20]
+	3.Add Get_FlowControl and Set_FlowControl
+
+---------------------------------------------------------------------------------------------------------------
+[Ver2.0.4][Sep,19/2003] by Sean
+Modify:
+	1.Modify the source code for Microsoft Windows OS (PC) and WinCE OS (WinCon8000)
+Fix:
+	1.Fix the bugs of the Send_Receive_Cmd, Send_Cmd, Receive_Cmd etc.
+	2.Fix the checksum bug.
+---------------------------------------------------------------------------------------------------------------
+
+[Ver2.0.3] by Sean
+New:	DataSizeInCom ['03/06/01] //get the present input buffer size
+	SetLineStatus		  //Set the pins status of COM port include RTS,DSR(on/off)
+	GetLineStatus	          //get the pins status of COM port include CTS,RI,CD,DTR (on/off)
+	DataSizeOutCom            //get the present output buffer size
+Modify: Receive_Binary ['03/06/09]
+	vxc_write
+Fix:  Fix the input limitation to exceed 1024 bytes
+---------------------------------------------------------------------------------------------------------------
+
+[Ver2.0.2] by Sean
+New: Add the function Send_Receive_Cmd_WithChar()
+     Add the function Send_Cmd_WithChar()
+     Add the function Receive_Cmd_WithChar()
+     Add the function Receive_Binary_MOS()
+The functions above aren't release to public, and they are called by MiniOS7DLL only.
+
+---------------------------------------------------------------------------------------------------------------
+
+[Ver2.0.1] by Sean
+---------------------------------------------------------------------------------------------------------------
+
+[Ver2.0.0] [Mar,17,2002] by Kevin
+
+	EXPORTS WORD CALLBACK Get_Uart_Version(void);
+	// Return: 200 ==> version 2.0.0
+
+	EXPORTS WORD  CALLBACK Open_Com(unsigned char cPort, DWORD dwBaudrate, char cData, char cParity, char cStop);
+	// cPort:		1~255
+	// dwBaudrate:	150,300,600,1200,2400,4800,9600,19200,38400,57600,115200,230400,460800,921600
+	// cData:		5,6,7,8
+	// cParity:		0 ==> Non Parity	(NonParity)
+	//				1 ==> Odd Parity	(OddParity)
+	//				2 ==> Even Parity	(EvenParity)
+	// cStop		0 ==> 1 Stop Bit	(OneStopBit)
+	//				1 ==> 1.5 Stop Bit	(One5StopBit)
+	//				2 ==> 2 Stop Bit	(TwoStopBit)
+	
+	EXPORTS WORD CALLBACK Change_Baudrate(unsigned char cPort, DWORD dwBaudrate);
+	// cPort:		1~255
+	// dwBaudrate:	150,300,600,1200,2400,4800,9600,19200,38400,57600,115200,230400,460800,921600
+
+	EXPORTS WORD CALLBACK Change_Config(unsigned char cPort, DWORD dwBaudrate, char cData, char cParity, char cStop);
+	
+	EXPORTS WORD CALLBACK Get_Com_Status(unsigned char cPort);
+	// cPort:		1~255
+	//
+	// Return: 0 ==> COM port not in use
+	//         1 ==> COM port in use
+	
+	EXPORTS BOOL  CALLBACK Close_Com(unsigned char cPort);
+	// cPort:		1~255
+	
+	EXPORTS WORD  CALLBACK Send_Receive_Cmd(unsigned char cPort, char szCmd[], char
+	        szResult[], WORD wTimeOut, WORD wChksum, WORD *wT);
+	// cPort:		1~255
+	// szCmd[]:		1024 Bytes maximum, without zero (0x0D) character.
+	// szResult[]:	1024 Bytes maximum, with one zero or 0x0D terminal character.
+	// wTimeOut:	Timeout for receiving result string. 
+	//				Unit: ms (1/1000 second)
+	// wChksum:		0   ==> add one 0x0D byte to the end of the szCmd
+	//				<>0 ==> add two check sum bytes and one 0x0D byte to the end of the szCmd
+	// *wT			return a reference number for identify the performance. 
+	//				*wT --> 0 :good 
+	
+	EXPORTS WORD  CALLBACK Send_Cmd(unsigned char cPort, char szCmd[],WORD wChksum);
+	
+	EXPORTS WORD CALLBACK Receive_Cmd(unsigned char cPort, char szResult[], WORD wTimeOut, WORD wChksum, WORD *wT);
+	
+	EXPORTS WORD CALLBACK Send_Binary(unsigned char cPort, char szCmd[],int iLen);
+	// For Mr. Blue [5,Feb,2002]
+	// To use protocol that not with 0x0d(CR) end.
+	// The function will check 0x0 or 0x20(Space) end.
+	// The input buffer will be cleared before sending out string. 
+	
+	EXPORTS WORD CALLBACK Receive_Binary(unsigned char cPort, char szResult[], WORD wTimeOut, WORD wLen, WORD *wT);
+	// To get response that not with 0x0d(CR) end.
+	// The function will recive wLen bytes.
+---------------------------------------------------------------------------------------------------------------
+	
+[Ver8.1]:
+  1. Baudrate up to 921600 bps
+---------------------------------------------------------------------------------------------------------------
+
+[Ver6.2]:
+  1. Baudrate setting 
+   	switch(baudrate)
+	{
+		case 1200 :   dcb.BaudRate=CBR_1200;    break;
+		case 2400 :   dcb.BaudRate=CBR_2400;    break;
+		case 4800 :   dcb.BaudRate=CBR_4800;    break;
+		case 9600 :   dcb.BaudRate=CBR_9600;    break;
+		case 19200 :  dcb.BaudRate=CBR_19200;   break;
+		case 38400 :  dcb.BaudRate=CBR_38400;   break;
+		case 57600 :  dcb.BaudRate=CBR_57600;   break;
+		case 115200 : dcb.BaudRate=CBR_115200;  break;
+		// ERROR CODE=3, baudrate error 
+		default: return BaudRateError; 
+	}
+    Change to ........
+    	dcb.BaudRate = baudrate;
+
+[Ver6.1]:
+  1. CMD_LEN is defined for Send/Receive buffer size,
+     now change the buffer suze to 1024 from 80.
+
+[Ver6.0]:   Open Multiple COM Port at the same time
+  1. add the following function
+     EXPORTS WORD CALLBACK ComPortStatus(char port);
+     //  1: this port is used now
+     //  0: this port isn't used now
+  2. removing the following functions
+     EXPORTS WORD  CALLBACK Send_Cmd(char cPort, char szCmd[], WORD wTimeout, WORD
+              wChkSum);
+     EXPORTS WORD  CALLBACK Read_Com_Status(char cPort, char szResult[], WORD
+              *wT);
+     EXPORTS WORD  CALLBACK Send_Str(char cPort, char szCmd[], WORD wTimeOut, WORD
+              wLenT, WORD wLenR);
+---------------------------------------------------------------------------------------------------------------
+
+[Ver5.1] :  Because [Ver5] not finished. So Please using [Ver5.1] to develop uart.dll
+---------------------------------------------------------------------------------------------------------------
+[Ver5] :  [Ver4] with support 255 COM Port.
+---------------------------------------------------------------------------------------------------------------
+[Ver4] :  Read/Write with Non-Overlapped, 
+          rewrite the following function:
+              Send_Cmd(),
+              Read_Com_Status(),
+	      Send_Str().
+---------------------------------------------------------------------------------------------------------------
+
+[Ver3] :  Read/Write with Non-Overlaped 
+---------------------------------------------------------------------------------------------------------------
+
+[Ver2] :  Read/Write with Original
+

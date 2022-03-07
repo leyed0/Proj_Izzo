@@ -1,0 +1,12 @@
+The key points of the DEMO3.EXE are given as following:
+1. copy UART.DLL & I7000.DLL to c:\windows\system\*.* first
+2. send command to ANC PC-202 counter
+3. receive result from ANC PC-202 counter
+4. send-command=<01C00007B22>
+5. receive-result=(00007BC6)
+
+The key features of the ANC PC-202 counter are given as following:
+1. two wire RS-485 interface
+2. A/B phase, general purpose counter
+3. baud rate=9600, 1 start-bit, 8 data-bit, no-parity, 1 stop-bit
+

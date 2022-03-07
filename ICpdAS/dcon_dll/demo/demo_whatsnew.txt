@@ -1,0 +1,20 @@
+[Date:2005-05-06]
+Add:
+VB5\
+   \FRNet
+       |--\FRNetDOAll_IOReadBackAll
+       |--\FRNetDOGroup_IOReadBackGroup
+       |--\FRNetDOBit_IOReadBackBit
+       +--\FRNetReadGroupStatus
+   \8K
+      |--\8080_counter
+          |--\frequency
+          |--\pulse_dirCounter
+          |--\up_downCounter
+          |--\upCounter
+
+For detail list of demo programs
+CD:\NAPDOS\Driver\DCON_DLL\Demo\VB5
+CD:\NAPDOS\Driver\DCON_DLL\Demo\VC5
+CD:\NAPDOS\Driver\DCON_DLL\Demo\Delphi3
+CD:\NAPDOS\Driver\DCON_DLL\Demo\BCB3

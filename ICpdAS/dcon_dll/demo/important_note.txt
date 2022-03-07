@@ -1,0 +1,41 @@
+There is an important note to run the demo programs.
+    
+    Copy all the files in the Driver to the demo,before compiling or run the demo.
+    For example if want to run a VB demo, 
+    please copy all the files in the \DCON_DLL\Driver\Vb5\ to the folder of that demo, 
+    or the demo program can not run,and will show error message.
+
+All the nessary including files are list below :
+
+\DCON_DLL\Driver\BCB3\
+    i7000.h
+    i8000.h
+    i87000.h
+    uart.h
+    I7000.dll
+    Uart.dll
+    i7000bc.lib
+    uartbc.lib
+
+\DCON_DLL\Driver\Delphi3\
+    I7000.dll
+    Uart.dll
+    I7000.PAS
+    I7000u.pas
+    I8000.PAS
+    I87000.PAS
+
+\DCON_DLL\Driver\Vb5\
+    I7000.dll
+    Uart.dll
+    i7000.bas
+
+\DCON_DLL\Driver\VC5\
+    i7000.h
+    i8000.h
+    i87000.h
+    uart.h
+    I7000.dll
+    Uart.dll
+    I7000.lib
+    Uart.lib

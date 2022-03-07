@@ -1,0 +1,10 @@
+The key points of the DEMO26.EXE are given as following:
+1. copy UART.DLL & I7000.DLL to c:\windows\system\*.* first
+2. checksum disable
+3. send command to I-7000
+4. receive result from I-7000
+5. address-01 --> baud rate=9600
+6. address-02 --> baud rate=38400
+7. address-03 --> baud rate=115200
+8. multi-speed driver demo
+
